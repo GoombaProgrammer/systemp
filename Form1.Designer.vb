@@ -80,7 +80,7 @@ Partial Class Form1
         '
         'Timer11
         '
-        Me.Timer11.Interval = 360000
+        Me.Timer11.Interval = 160000
         '
         'Timer12
         '
@@ -100,6 +100,7 @@ Partial Class Form1
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Form1"
+        Me.ShowInTaskbar = False
         Me.Text = "Form1"
         Me.TransparencyKey = System.Drawing.Color.Red
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
