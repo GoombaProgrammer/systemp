@@ -221,6 +221,7 @@ Public Class Form1
         Timer13.Start()
         Me.WindowState = FormWindowState.Minimized
         haha = Take()
+        Timer11.Start()
         Me.WindowState = FormWindowState.Maximized
         Timer12.Stop()
     End Sub
