@@ -36,6 +36,11 @@ Partial Class Form1
         Me.Timer11 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer12 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer13 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer14 = New System.Windows.Forms.Timer(Me.components)
+        Me.Pf = New System.Windows.Forms.PictureBox()
+        Me.Timer15 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer16 = New System.Windows.Forms.Timer(Me.components)
+        CType(Me.Pf, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Timer1
@@ -90,12 +95,36 @@ Partial Class Form1
         '
         Me.Timer13.Interval = 200000
         '
+        'Timer14
+        '
+        Me.Timer14.Interval = 420000
+        '
+        'Pf
+        '
+        Me.Pf.BackgroundImage = Global.Good_Game_s.My.Resources.Resources._6oYXyA
+        Me.Pf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Pf.Location = New System.Drawing.Point(109, 71)
+        Me.Pf.Name = "Pf"
+        Me.Pf.Size = New System.Drawing.Size(309, 291)
+        Me.Pf.TabIndex = 0
+        Me.Pf.TabStop = False
+        Me.Pf.Visible = False
+        '
+        'Timer15
+        '
+        Me.Timer15.Interval = 10000
+        '
+        'Timer16
+        '
+        Me.Timer16.Interval = 350000
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Red
         Me.ClientSize = New System.Drawing.Size(1333, 623)
+        Me.Controls.Add(Me.Pf)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(4)
@@ -104,6 +133,7 @@ Partial Class Form1
         Me.Text = "Form1"
         Me.TransparencyKey = System.Drawing.Color.Red
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        CType(Me.Pf, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -120,4 +150,8 @@ Partial Class Form1
     Friend WithEvents Timer11 As Timer
     Friend WithEvents Timer12 As Timer
     Friend WithEvents Timer13 As Timer
+    Friend WithEvents Timer14 As Timer
+    Friend WithEvents Pf As PictureBox
+    Friend WithEvents Timer15 As Timer
+    Friend WithEvents Timer16 As Timer
 End Class

