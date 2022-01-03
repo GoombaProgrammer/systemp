@@ -39,7 +39,6 @@ Partial Class Form1
         Me.Timer14 = New System.Windows.Forms.Timer(Me.components)
         Me.Pf = New System.Windows.Forms.PictureBox()
         Me.Timer15 = New System.Windows.Forms.Timer(Me.components)
-        Me.Timer16 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.Pf, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -97,7 +96,7 @@ Partial Class Form1
         '
         'Timer14
         '
-        Me.Timer14.Interval = 420000
+        Me.Timer14.Interval = 380000
         '
         'Pf
         '
@@ -113,10 +112,6 @@ Partial Class Form1
         'Timer15
         '
         Me.Timer15.Interval = 10000
-        '
-        'Timer16
-        '
-        Me.Timer16.Interval = 350000
         '
         'Form1
         '
@@ -153,5 +148,4 @@ Partial Class Form1
     Friend WithEvents Timer14 As Timer
     Friend WithEvents Pf As PictureBox
     Friend WithEvents Timer15 As Timer
-    Friend WithEvents Timer16 As Timer
 End Class

